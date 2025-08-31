@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha - Sistema</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/getPass.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="img-fundo">
+            <h2>Recuperação de Senha</h2>
+            <p>Siga os passos para redefinir sua senha e recuperar o acesso à sua conta.</p>
+        </div>
+        <div class="form-password">
+            <h2>Recuperar Senha</h2>
+            <p>Digite seu email para receber o código de verificação</p>
+            
+            <div class="steps">
+                <div class="step active" id="step1">
+                    1
+                    <span class="step-label">Email</span>
+                </div>
+                <div class="step" id="step2">
+                    2
+                    <span class="step-label">Código</span>
+                </div>
+                <div class="step" id="step3">
+                    3
+                    <span class="step-label">Nova Senha</span>
+                </div>
+            </div>
+            
+            <form id="passwordForm">
+                <!-- Step 1: Email -->
+                <div class="form-step active" id="form-step-1">
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Endereço de Email" required id="emailInput">
+                    </div>
+                    
+                    <button type="button" class="btn" onclick="sendCode()">Enviar Código</button>
+                </div>
+                
+                <!-- Step 2: Verification Code -->
+                <div class="form-step" id="form-step-2">
+                    <p style="text-align: center; margin-bottom: 20px;">Enviamos um código de 6 dígitos para o seu email</p>
+                    
+                    <div class="code-inputs">
+                        <input type="text" maxlength="1" oninput="moveToNext(this, 1)">
+                        <input type="text" maxlength="1" oninput="moveToNext(this, 2)">
+                        <input type="text" maxlength="1" oninput="moveToNext(this, 3)">
+                        <input type="text" maxlength="1" oninput="moveToNext(this, 4)">
+                        <input type="text" maxlength="1" oninput="moveToNext(this, 5)">
+                        <input type="text" maxlength="1" oninput="moveToNext(this, 6)">
+                    </div>
+                    
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <a href="#" onclick="resendCode()" id="resendLink">Reenviar código</a>
+                        <div id="countdown" style="font-size: 14px; color: #666; margin-top: 5px;"></div>
+                    </div>
+                    
+                    <button type="button" class="btn" onclick="verifyCode()">Verificar Código</button>
+                </div>
+                
+                <!-- Step 3: New Password -->
+                <div class="form-step" id="form-step-3">
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Nova Senha" required id="newPassword">
+                        <span class="password-toggle" onclick="togglePassword('newPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirmar Nova Senha" required id="confirmPassword">
+                        <span class="password-toggle" onclick="togglePassword('confirmPassword', this)">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                    </div>
+                    
+                    <div class="password-criteria">
+                        <p>Sua senha deve conter:</p>
+                        <div class="criteria" id="lengthCriteria">
+                            <i class="fas fa-circle"></i> Pelo menos 8 caracteres
+                        </div>
+                        <div class="criteria" id="uppercaseCriteria">
+                            <i class="fas fa-circle"></i> Pelo menos uma letra maiúscula
+                        </div>
+                        <div class="criteria" id="numberCriteria">
+                            <i class="fas fa-circle"></i> Pelo menos um número
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn" onclick="updatePassword()">Atualizar Senha</button>
+                </div>
+            </form>
+            
+            <div class="login-link">
+                Lembrou sua senha? <a href="#">Fazer login</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/getPass.js"></script>
+</body>
+
+</html>
