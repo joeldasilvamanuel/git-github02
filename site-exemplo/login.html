@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="img-fundo">
+            <h2>Bem-vindo ao Nosso Sistema</h2>
+            <p>Faça login para acessar recursos exclusivos e gerenciar sua conta de forma segura e intuitiva.</p>
+        </div>
+        <div class="form-login">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Nome de usuário ou email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Senha" required>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox"> Lembrar-me
+                    </label>
+                    <a href="getPass.html">Esqueceu a senha?</a>
+                </div>
+               <button type="submit" class="btn" onclick="event.preventDefault(); window.location.href='dashboard.html';">
+                Entrar
+               </button>
+
+            </form>
+            
+            <div class="separator">
+                <span>Ou entre com</span>
+            </div>
+            
+            <div class="social-login">
+                <div class="social-btn facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <div class="social-btn google">
+                    <i class="fab fa-google"></i>
+                </div>
+                <div class="social-btn twitter">
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+            
+            <div class="register">
+                Não tem uma conta? <a href="register.html">Registrar-se</a>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
