@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angola News - Sua fonte de notícias sobre Angola</title>
+    <style>
+        /* Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #c00;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: #cc0000;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo h1 {
+            font-size: 2.5rem;
+            margin-left: 10px;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cc0000;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        /* Navegação */
+        nav {
+            background-color: #990000;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+        }
+        
+        /* Banner Principal */
+        .banner {
+            background-color: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Conteúdo Principal */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        /* Notícias em Destaque */
+        .featured-news {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: #cc0000;
+            border-bottom: 2px solid #cc0000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-weight: bold;
+        }
+        
+        .news-content {
+            padding: 15px;
+        }
+        
+        .news-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .news-content p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background-color: #cc0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        
+        .read-more:hover {
+            background-color: #990000;
+            text-decoration: none;
+        }
+        
+        /* Barra Lateral */
+        .sidebar {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-title {
+            color: #cc0000;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .sidebar-news {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-news:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .sidebar-news h4 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .sidebar-news p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: #cc0000;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .newsletter h3 {
+            margin-bottom: 15px;
+        }
+        
+        .newsletter form {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter input {
+            padding: 10px;
+            border: none;
+            width: 70%;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .newsletter button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 0 3px 3px 0;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #cc0000;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .social-links a {
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+            
+            .banner h2 {
+                font-size: 1.8rem;
+            }
+            
+            .newsletter form {
+                flex-direction: column;
+            }
+            
+            .newsletter input {
+                width: 100%;
+                border-radius: 3px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter button {
+                width: 100%;
+                border-radius: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-img">AN</div>
+                <h1>Angola News</h1>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navegação -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#">Política</a></li>
+                <li><a href="#">Economia</a></li>
+                <li><a href="#">Sociedade</a></li>
+                <li><a href="#">Cultura</a></li>
+                <li><a href="#">Desportos</a></li>
+                <li><a href="#">Internacional</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Banner Principal -->
+    <div class="banner">
+        <div class="container">
+            <h2>As últimas notícias de Angola e do mundo</h2>
+            <p>Informação confiável e atualizada sobre os principais acontecimentos no país</p>
+        </div>
+    </div>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container main-content">
+        <!-- Conteúdo Principal -->
+        <div class="content">
+            <!-- Notícias em Destaque -->
+            <section class="featured-news">
+                <h2 class="section-title">Notícias em Destaque</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-img">Imagem da Notícia</div>
+                        <div class="news-content">
+                            <h3>Crescimento económico de Angola previsto em 2,6% para 2024</h3>
+                            <p>O Fundo Monetário Internacional revisou em alta as previsões de crescimento para a economia angolana este ano, destacando...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-img">Imagem da Notícia</div>
+                        <div class="news-content">
+                            <h3>Presidente anuncia novo programa de habitação social</h3>
+                            <p>O Chefe de Estado angolano lançou um ambicioso programa para construção de 50 mil habitações sociais em todas as províncias...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-img">Imagem da Notícia</div>
+                        <div class="news-content">
+                            <h3>Seleção Nacional de Angola vence amistoso contra Cabo Verde</h3>
+                            <p>Os Palancas Negras venceram por 2-1 a equipa de Cabo Verde num jogo de preparação para as eliminatórias da CAN...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-img">Imagem da Notícia</div>
+                        <div class="news-content">
+                            <h3>Festival Internacional de Cultura decorre em Luanda</h3>
+                            <p>O evento reúne artistas de todo o mundo e celebra a diversidade cultural angolana com música, dança e exposições...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            
+            <!-- Últimas Notícias -->
+            <section class="featured-news">
+                <h2 class="section-title">Últimas Notícias</h2>
+                <div class="news-grid">
+                    <article class="news-card">
+                        <div class="news-img">Imagem da Notícia</div>
+                        <div class="news-content">
+                            <h3>Governo aprova novo plano de combate à pobreza</h3>
+                            <p>O Executivo aprovou um programa integrado de desenvolvimento rural que visa reduzir a pobreza nas comunidades...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </article>
+                    
+                    <article class="news-card">
+                        <div class="news-img">Imagem da Notícia</div>
+                        <div class="news-content">
+                            <h3>Angola participa na cimeira sobre clima em Nairobi</h3>
+                            <p>Uma delegação angolana chefiada pelo Ministro do Ambiente está a participar na cimeira africana sobre mudanças climáticas...</p>
+                            <a href="#" class="read-more">Ler mais</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Barra Lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Notícias Populares</h3>
+                <div class="sidebar-news">
+                    <h4><a href="#">Preços do petróleo sobem no mercado internacional</a></h4>
+                    <p>As cotações do barril de crude registaram alta de 3% esta semana...</p>
+                </div>
+                <div class="sidebar-news">
+                    <h4><a href="#">Novo hospital inaugurado em Benguela</a></h4>
+                    <p>Unidade de saúde vai atender mais de 50 mil pessoas na região...</p>
+                </div>
+                <div class="sidebar-news">
+                    <h4><a href="#">Escritora angolana vence prémio literário</a></h4>
+                    <p>Romance "As Flores do Embondo" conquistou o prémio Lusofonia...</p>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Cotações</h3>
+                <div class="sidebar-news">
+                    <h4>Petróleo Brent</h4>
+                    <p>USD 85,23 /barril (+1,2%)</p>
+                </div>
+                <div class="sidebar-news">
+                    <h4>Dólar Americano</h4>
+                    <p>Compra: 825 Kz | Venda: 835 Kz</p>
+                </div>
+                <div class="sidebar-news">
+                    <h4>Euro</h4>
+                    <p>Compra: 895 Kz | Venda: 905 Kz</p>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Previsão do Tempo</h3>
+                <div class="sidebar-news">
+                    <h4>Luanda</h4>
+                    <p>26°C - Parcialmente nublado</p>
+                </div>
+                <div class="sidebar-news">
+                    <h4>Lubango</h4>
+                    <p>20°C - Possibilidade de chuva</p>
+                </div>
+                <div class="sidebar-news">
+                    <h4>Huambo</h4>
+                    <p>19°C - Tempestades isoladas</p>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Subscreva a nossa newsletter</h3>
+            <p>Receba as notícias mais importantes no seu email</p>
+            <form>
+                <input type="email" placeholder="Seu endereço de email" required>
+                <button type="submit">Subscrever</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre Nós</h4>
+                    <p>Angola News é o seu portal de notícias confiável sobre Angola. Trazemos informação atualizada sobre política, economia, sociedade, cultura e desportos.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Utilização</a>
+                    <a href="#">Contactos</a>
+                    <a href="#">Anuncie</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contactos</h4>
+                    <p>Email: info@angolanews.com</p>
+                    <p>Telefone: +244 923 456 789</p>
+                    <p>Endereço: Av. 4 de Fevereiro, Luanda, Angola</p>
+                    <div class="social-links">
+                        <a href="#">📱</a>
+                        <a href="#">💻</a>
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Angola News. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
