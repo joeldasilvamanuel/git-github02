@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Adiciona isto dentro do <head> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <title>Angola News - Sua fonte de notícias sobre Angola</title>
     <style>
         /* Estilos Gerais */
@@ -299,24 +302,43 @@
             display: block;
         }
         
+        /* Social Links */
         .social-links {
             display: flex;
             justify-content: center;
-            margin-top: 10px;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
         }
-        
+
         .social-links a {
-            margin: 0 10px;
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            /* background-color: #cc0000; */
+            color: white;
+            font-size: 1.4rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        
+
+        .social-links a:hover {
+            /* background-color: #990000; */
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+
         .copyright {
             border-top: 1px solid #555;
             padding-top: 20px;
             color: #aaa;
             font-size: 0.9rem;
         }
-        
+
         /* Responsividade */
         @media (max-width: 992px) {
             .main-content {
@@ -332,7 +354,7 @@
                 text-align: center;
             }
         }
-        
+
         @media (max-width: 768px) {
             nav ul {
                 flex-wrap: wrap;
@@ -540,7 +562,7 @@
                     <h4>Sobre Nós</h4>
                     <p>Angola News é o seu portal de notícias confiável sobre Angola. Trazemos informação atualizada sobre política, economia, sociedade, cultura e desportos.</p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Links Rápidos</h4>
                     <a href="#">Política de Privacidade</a>
@@ -548,25 +570,34 @@
                     <a href="#">Contactos</a>
                     <a href="#">Anuncie</a>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Contactos</h4>
                     <p>Email: info@angolanews.com</p>
                     <p>Telefone: +244 923 456 789</p>
                     <p>Endereço: Av. 4 de Fevereiro, Luanda, Angola</p>
                     <div class="social-links">
-                        <a href="#">📱</a>
-                        <a href="#">💻</a>
-                        <a href="#">📘</a>
-                        <a href="#">🐦</a>
+                        <a href="https://wa.me/244XXXXXXXXX" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://github.com/teu-usuario" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://facebook.com/teu-usuario" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/teu-usuario" target="_blank" title="Twitter/X">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="copyright">
                 <p>&copy; 2023 Angola News. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 </body>
+
 </html>
